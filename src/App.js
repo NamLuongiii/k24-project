@@ -9,13 +9,14 @@ import { useEffect, useState } from "react"
 
 import { useDispatch, useSelector } from "react-redux"
 import { login, logout } from "./redux/_app"
-
+import routers from "./router"
+import PrivateRouter from './components/privateRouter.jsx';
 
 function App() {
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
-    const { isLogin } = useSelector(state => state.app);
+    
 
     useEffect(() => {
         const token = localStorage.getItem("token")
@@ -31,29 +32,10 @@ function App() {
     return (
         <div className="App">
             <Routes>
-                {isLogin && (
-                    <>
-                        <Route path="/" element={<Homepage />}></Route>
-                        <Route path="/user" element={<UserPage />}></Route>
-                    </>
-                )}
-
-                {isLogin == false && (
-                    <>
-                        <Route path="/" element={<Homepage />}></Route>
-                        <Route path="/login" element={<LoginPage />}></Route>
-                        <Route
-                            path="/*"
-                            element={
-                                <div>
-                                    <button onClick={() => navigate("/login")}>
-                                        Go to login
-                                    </button>
-                                </div>
-                            }
-                        ></Route>
-                    </>
-                )}
+                {routers.map((route, index) => <Route 
+                    key={index} 
+                    path={route.path} 
+                    element={route.private == true ? <PrivateRouter>{route.element}</PrivateRouter> : route.element } />)}
             </Routes>
         </div>
     )
