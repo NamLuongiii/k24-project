@@ -7,17 +7,24 @@ import Homepage from "./pages/homepage"
 import UserPage from "./pages/user"
 import { useEffect, useState } from "react"
 
+import { useDispatch, useSelector } from "react-redux"
+import { login, logout } from "./redux/_app"
+
+
 function App() {
     const navigate = useNavigate()
+    const dispatch = useDispatch();
 
-    const [isLogin, setIsLogin] = useState(false)
+    const { isLogin } = useSelector(state => state.app);
 
     useEffect(() => {
         const token = localStorage.getItem("token")
         if (token) {
-            setIsLogin(true)
+            const action = login();
+            dispatch(action);
         } else {
-            setIsLogin(false)
+            const action = logout();
+            dispatch(action);
         }
     }, [localStorage.getItem("token")])
 
