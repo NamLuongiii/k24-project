@@ -1,0 +1,13 @@
+import React from 'react';
+import Header from '../components/header';
+
+function Home(props) {
+    return (
+        <div>
+            <Header />
+            Home
+        </div>
+    );
+}
+
+export default Home;
