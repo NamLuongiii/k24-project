@@ -7,6 +7,7 @@ import RegisterPage from "../pages/Register";
 import Cart from "../pages/Cart";
 import PageNotFound from "../pages/PageNotFound";
 import Search from "../pages/Search";
+import Order from "../pages/Order";
 
 const routers = [
   {
@@ -47,6 +48,11 @@ const routers = [
   {
     path: "/product/:id",
     element: <Detail />,
+    private: false,
+  },
+  {
+    path: "/orders",
+    element: <Order />,
     private: false,
   },
   {
