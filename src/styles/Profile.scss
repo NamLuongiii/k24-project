@@ -1,8 +1,7 @@
-.background {
+.container {
     padding-top: 100px;
     width: 100%;
     height: 100vh;
-    background-color: gray;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -127,7 +126,7 @@
 
 /////////////////////////////////////////////////////////////////Tablet
 @media only screen and (min-width: 740px) and (max-width: 1023px) {
-    .background {
+    .container {
         & .profile {
             &__main {
                 &__edit {
@@ -168,7 +167,7 @@
 
 /////////////////////////////////////////////////////////////Mobile
 @media only screen and (max-width: 739px) {
-    .background {
+    .container {
         & .profile {
             &__main {
                 display: flex;

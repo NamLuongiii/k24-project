@@ -78,7 +78,7 @@ export default function Profile() {
   return (
     <div>
       <Header />
-      <div className="background">
+      <div className="container">
         {loading && <Loading />}
         <div className="profile">
           <section className="profile__title">
@@ -124,6 +124,7 @@ export default function Profile() {
                 </button>
               </div>
             </section>
+
             <section className="profile__main__avatar">
               <img src={data && data.avatar} alt="" />
               <div className="changeAvatar">

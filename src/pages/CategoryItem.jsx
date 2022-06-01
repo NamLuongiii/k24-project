@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Product from "../components/Product";
 import "../styles/CategoryItem.scss";
 
 function CategoryItem(props) {
@@ -41,14 +42,7 @@ function CategoryItem(props) {
       
       <div className="category-item__list">
         {categoryItem.items.map((value, index) => (
-            <div key={index} className="category-item__inner">
-                <div className="category-item__title">{ value.name}</div>
-                <div className="category-item__image">
-                    <img  src={value.image} alt={value.image} />
-                    <div>{value.price}$</div>
-                    <div>category: {value.category.name}</div>
-                </div>
-            </div>
+          <Product key={index} product={value} />
         ))}
       </div>
     </div>
