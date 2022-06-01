@@ -33,12 +33,12 @@ const routers = [
   {
     path: "/cart",
     element: <Cart />,
-    private: false,
+    private: true,
   },
   {
     path: "/createOrder",
     element: <CreateOrder />,
-    private: false,
+    private: true,
   },
   {
     path: "/search",

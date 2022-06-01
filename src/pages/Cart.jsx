@@ -7,17 +7,21 @@ import { Link, useNavigate } from "react-router-dom";
 import logo2 from "../assets/images/logo-2.png";
 import Loading from "../components/Loading";
 import "../styles/Cart.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../redux/_cart";
 
 const URL = 'https://k24-server-1.herokuapp.com'
 
 function Cart(props) {
-    const [products, setProducts] = useState([])
-    const token = localStorage.getItem("token")
-    const [disabled, setDisabled] = useState(false)
     const navigate = useNavigate()
 	const dispatch = useDispatch();
+
+    const token = localStorage.getItem("token")
+
+    const {cart} = useSelector(state => state.cartReducer);
+
+    const products = cart ? cart.products : [];
+    const [disabled, setDisabled] = useState(false)
 
     useEffect(() => {
         getProduct()
@@ -35,7 +39,7 @@ function Cart(props) {
                 token: token,
             },
             })
-            setProducts(data.data.products)
+            // setProducts(data.data.products)
             const action = setCart(data.data)
             dispatch(action);
 
@@ -80,21 +84,25 @@ function Cart(props) {
     }
 
     const decreaseQuantity = async (product) => {
-        setDisabled(true)
-        await apiUpdateQuantity(convertData(), { product: product.product._id, quantity: product.quantity - 1 })
-        await getProduct()
-        setDisabled(false)
+        try {
+            setDisabled(true)
+            await apiUpdateQuantity(convertData(), { product: product.product._id, quantity: product.quantity - 1 })
+            await getProduct()
+            setDisabled(false)            
+        } catch (error) {
+            alert(error.message)
+        }
     }
 
     const increaseQuantity = async (product) => {
-        setDisabled(true)
-        await apiUpdateQuantity(convertData(), { product: product.product._id, quantity: product.quantity + 1 })
-        await getProduct()
-        setDisabled(false)
-    }
-
-    const updateQuantity = () => {
-
+        try {
+            setDisabled(true)
+            await apiUpdateQuantity(convertData(), { product: product.product._id, quantity: product.quantity + 1 })
+            await getProduct()
+            setDisabled(false)
+        } catch (error) {
+            alert(error.message)
+        }
     }
 
     const deleteProduct = async (product) => {
@@ -128,11 +136,11 @@ function Cart(props) {
         return totalPrice
     }
 
+    const updateQuantity = () => {
+
+    }
+
     
-    
-    // if(products.length === 0) {
-    //     return <Loading />
-    // }
     return (
         <div>
             {/* <header className="header-cart">
