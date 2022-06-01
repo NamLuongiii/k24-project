@@ -21,7 +21,7 @@ function App() {
       const action = removeUser();
       dispatch(action);
     }
-  }, [token]);
+  }, []);
 
   const getUser = async () => {
     try {

@@ -1,8 +1,8 @@
 import React from "react";
-import "../assets2/css/base.css";
-import "../assets2/css/grid.css";
-import "../assets2/css/main.css";
-import "../assets2/css/responsive.css";
+import "../styles/css/base.css";
+import "../styles/css/main.css";
+import "../styles/css/grid.css";
+import "../styles/css/responsive.css";
 import { BsFacebook } from "react-icons/bs";
 import { AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
 

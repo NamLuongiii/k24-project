@@ -51,9 +51,13 @@ export default function Home() {
     >
 
       <div className="container">
-        <div className="home-banner" style={{ marginTop: '100px', paddingTop: '20px'}}>
-          <img style={{ width: '100%'}} src="https://cf.shopee.com.my/file/5e7d031649e162ee1b4fa73bc686bb43" alt="home-banner" />
-        </div>
+       <div className="row">
+         <div className="col-12">
+            <div className="home-banner" style={{ marginTop: '100px', paddingTop: '20px'}}>
+              <img style={{ width: '100%'}} src="https://cf.shopee.com.my/file/5e7d031649e162ee1b4fa73bc686bb43" alt="home-banner" />
+            </div>
+         </div>
+       </div>
       </div>
 
       <Category />
@@ -62,19 +66,23 @@ export default function Home() {
         <Loading />
       ) : (
         <div className="product-home__main container">
-          <div className="product-home__header">
-            <div className="product-home__today">
-              <h3 className="product-home__title">GỢI Ý HÔM NAY</h3>
-            </div>
+          <div className="row">
+           <div className="col-12">
+              <div className="product-home__header">
+                <div className="product-home__today">
+                  <h3 className="product-home__title">GỢI Ý HÔM NAY</h3>
+                </div>
+              </div>
+           </div>
           </div>
 
-          <div className="product-home__list">
+          {/* <div className="product-home__list"> */}
             <div className="row" >
               {productList.items.map((productItem, index) => (
                 <Product key={index} product={productItem} />
               ))}
             </div>
-          </div>
+          {/* </div> */}
         </div>
       )}
 
