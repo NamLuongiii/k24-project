@@ -196,6 +196,13 @@ $color--white: #ffffff;
                             width: 32px;
                             height: 32px;
                         }
+                        ._3Ell0h[type="text"]:disabled {
+                            color: #d4cece;
+                        }
+                        ._3Ell0h:disabled {
+                            opacity: 0.6;
+                            cursor: not-allowed;
+                        }
                         ._3Ell0h:first-child {
                             border-top-right-radius: 0;
                             border-bottom-right-radius: 0;
