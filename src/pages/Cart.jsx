@@ -135,7 +135,7 @@ function Cart(props) {
     // }
     return (
         <div>
-            <header className="header-cart">
+            {/* <header className="header-cart">
                 <div style={{ display: "flex", alignItems: "center", width: 300 }}>
                     <img
                         src={logo2}
@@ -157,7 +157,7 @@ function Cart(props) {
                         <FaSearch />
                     </button>
                 </div>
-            </header>
+            </header> */}
             <section className="content-product">
                 <div className="content-product__main">
                     <div className="_2eZQze">
