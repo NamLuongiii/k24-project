@@ -5,6 +5,7 @@ import LoginPage from "../pages/Login";
 import ProfilePage from "../pages/Profile";
 import RegisterPage from "../pages/Register";
 import Cart from "../pages/Cart";
+import CreateOrder from "../pages/CreateOrder";
 import PageNotFound from "../pages/PageNotFound";
 import Search from "../pages/Search";
 
@@ -32,6 +33,11 @@ const routers = [
   {
     path: "/cart",
     element: <Cart />,
+    private: false,
+  },
+  {
+    path: "/createOrder",
+    element: <CreateOrder />,
     private: false,
   },
   {

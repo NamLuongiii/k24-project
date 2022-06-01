@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import logo2 from '../assets/images/logo-2.png'
 import { UilMinus, UilPlus, UilTrashAlt, UilEditAlt   } from '@iconscout/react-unicons'
 import "../styles/Cart.scss"
 import { FaSearch } from "react-icons/fa";
-import { Link } from 'react-router-dom'
-import Loading from '../components/Loading.jsx'
-
+import { Link, useNavigate } from "react-router-dom";
+import logo2 from "../assets/images/logo-2.png";
+import Loading from "../components/Loading";
+import "../styles/Cart.scss";
+import { useDispatch } from "react-redux";
+import { setCart } from "../redux/_cart";
 
 const URL = 'https://k24-server-1.herokuapp.com'
 
@@ -16,6 +17,7 @@ function Cart(props) {
     const token = localStorage.getItem("token")
     const [disabled, setDisabled] = useState(false)
     const navigate = useNavigate()
+	const dispatch = useDispatch();
 
     useEffect(() => {
         getProduct()
@@ -34,6 +36,9 @@ function Cart(props) {
             },
             })
             setProducts(data.data.products)
+            const action = setCart(data.data)
+            dispatch(action);
+
         } catch (error) {
             console.log(error.message);
         }
@@ -125,9 +130,9 @@ function Cart(props) {
 
     
     
-    if(products.length === 0) {
-        return <Loading />
-    }
+    // if(products.length === 0) {
+    //     return <Loading />
+    // }
     return (
         <div>
             <header className="header-cart">
@@ -242,7 +247,9 @@ function Cart(props) {
                     <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
                         <span></span>
                         <span>{totalPrice()}</span>
-                        <button className="btn-buy"> Mua Hàng </button>
+                        <button className="btn-buy" onClick={() => {
+                            navigate("/createOrder")
+                        }}> Mua Hàng </button>
                     </div>
                     
                 </div>

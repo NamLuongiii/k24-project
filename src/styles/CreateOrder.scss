@@ -33,7 +33,7 @@ header span {
 .boxAddress__title {
     display: flex;
     align-items: center;
-    font-size: 1.125rem;
+    font-size: 16px;
     color: #ee4d2d;
     margin-bottom: 20px;
     text-transform: capitalize;
@@ -51,7 +51,7 @@ header span {
 }
 
 .optionDefault {
-    font-size: .875rem;
+    font-size: 14px;
     font-weight: 500;
     color: #929292;
     margin-left: 30px;
@@ -106,8 +106,21 @@ header span {
 
 //Cart detail 
 
+.main_Cart{
+    padding-top: 70px;
+}
+
+.thumnail-img{
+    width: 40px;
+    aspect-ratio: auto 40 / 40;
+    height: 40px;
+    margin-right: 20px;
+}
+
 .cart_detail {
     display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .cart_pay {
