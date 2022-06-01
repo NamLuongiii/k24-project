@@ -10,16 +10,11 @@ import routers from "./routers/router";
 
 function App() {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.userReducer);
-  const [token, setToken] = useState(() => localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    // console.log('runnn', token);
     if (token) {
       getUser();
-    } else {
-      const action = removeUser();
-      dispatch(action);
     }
   }, []);
 
