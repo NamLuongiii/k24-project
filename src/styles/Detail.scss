@@ -17,6 +17,7 @@
 }
 
 .add-to-cart .addtocart {
+    min-width: 200px;
     height: 50px;
     line-height: 40px;
     border: none;
@@ -32,4 +33,9 @@
 
 .description {
     margin-bottom: 20px;
+}
+
+.box-image{
+    border: 1px solid #ddd;
+    padding: 10px;
 }

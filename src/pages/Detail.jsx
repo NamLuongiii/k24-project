@@ -9,7 +9,8 @@ function Detail(props) {
   const [product, setProduct] = useState({});
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+  const [loadingText, setLoadingText] = useState("Add to Cart");
+
   const token = localStorage.getItem("token");
   
   let { id } = useParams();
@@ -58,7 +59,8 @@ function Detail(props) {
   };
 
   const handleAddCart = async () => {
-    document.getElementById("addtocart").setAttribute("disabled", "disabled"); 
+    document.getElementById("addtocart").setAttribute("disabled", "disabled");
+    setLoadingText("Adding...");
 
     try {
       const url = "https://k24-server-1.herokuapp.com/cart";
@@ -83,7 +85,11 @@ function Detail(props) {
     } catch (error) {
       console.log(error.message);
     } finally {
-      navigate("/cart");
+      setLoadingText("Complete...");
+
+      setTimeout(function(){
+          navigate("/cart")
+      }, 1000);
     }
   };
 
@@ -119,7 +125,7 @@ function Detail(props) {
                 <div className="add-to-cart">
                   {token ? (
                     <button id="addtocart" className="addtocart" onClick={handleAddCart}>
-                      Add to Cart
+                      {loadingText}
                     </button>
                   ) : (
                     <button
