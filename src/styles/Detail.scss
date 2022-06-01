@@ -1,0 +1,35 @@
+.product-detail-container .box-info {
+    text-align: left;
+}
+
+.price-stock {
+    display: flex;
+    margin-bottom: 15px;
+
+    .info-price {
+        margin-right: 50px;
+    }
+}
+
+.box-info .name {
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+
+.add-to-cart .addtocart {
+    height: 50px;
+    line-height: 40px;
+    border: none;
+    background-color: #ee4d2d;
+    padding: 0 30px;
+    color: #fff;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: #df3b1a;
+    }
+}
+
+.description {
+    margin-bottom: 20px;
+}
