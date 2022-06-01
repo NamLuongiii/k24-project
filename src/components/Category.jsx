@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "../styles/Category.scss";
 
 function Category(props) {
-
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -28,11 +27,11 @@ function Category(props) {
   };
 
   return (
-    <div>
-      <div className="main">
-        <div className="container">
+    <div className="category-main">
+      <div className="container">
+        <div className="category-inner">
           <div className="category-header">CATEGORY</div>
-
+  
           <div className="category-list">
             {categories.map((Item, index) => (
               <div

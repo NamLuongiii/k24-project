@@ -1,6 +1,16 @@
+.category-main {
+    // margin-top: 100px;
+    padding-top: 1.5rem;
+}
+
+.category-inner {
+    background-color: white;
+
+}
 
 .category-header {
     padding: 20px;
+    text-align: left;
 }
 
 .category-list {
@@ -15,10 +25,9 @@
     -webkit-box-align: center;
     align-items: center;
     height: 150px;
-    border: 1px solid rgb(231, 228, 228);
+    border: 0.5px solid rgb(231, 228, 228);
     cursor: pointer;
     transition: all 0.5s ease 0s;
-    padding-top: 15px;
     width: calc(10%);
 }
 
@@ -27,6 +36,7 @@
     width: 70px;
     display: block;
     margin: auto;
+    border-radius: 50%;
 }
 
 .category-name {

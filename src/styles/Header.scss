@@ -6,6 +6,7 @@
     height: 120px;
     background-color: #ee4d2d;
     z-index: 100;
+    top: 0;
 
     &__option {
         position: absolute;
@@ -139,8 +140,9 @@
 
     &__user {
         position: absolute;
-        top: 0;
-        right: 8%;
+        top: 20px;
+        right: 55px;
+        transform: translate(-50%, -50%);
 
         & button {
             background-color: transparent;
@@ -160,6 +162,11 @@
             opacity: 0.8;
             padding: 0px 4px;
             user-select: none;
+        }
+
+        &-name {
+            color: white;
+            font-weight: bold;
         }
     }
 }

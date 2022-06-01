@@ -11,6 +11,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* overflow: auto; */
 }
 
 html {
@@ -58,7 +59,7 @@ Detail page
   padding-left: 30px;
 }
 
-.container {
+/* .container {
   max-width: 1170px;
   margin: 0 auto;
-}
+} */

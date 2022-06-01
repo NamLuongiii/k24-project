@@ -80,10 +80,11 @@ function Detail(props) {
 
   return (
     <div>
-      <Header />
-
-      <div className="container" style={{ paddingTop: "150px" }}>
-        <div className="product-detail-container">
+      <div className="container">
+        <div
+          className="product-detail-container"
+          style={{ marginTop: "100px" }}
+        >
           <div className="box-image">
             <div className="gallery-item item-main">
               <img src={product.image} />
@@ -114,6 +115,31 @@ function Detail(props) {
               )}
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="box-info">
+        <h2>{product.name}</h2>
+
+        <div className="price-stock clearfix">
+          <div className="info-price">{product.price}</div>
+          <div className="stock">In stock</div>
+        </div>
+
+        <div className="add-to-cart">
+          {token ? (
+            <button className="addtocart" onClick={handleAddCart}>
+              Add to Cart
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Login
+            </button>
+          )}
         </div>
       </div>
     </div>

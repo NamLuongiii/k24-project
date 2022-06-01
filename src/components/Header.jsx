@@ -59,6 +59,7 @@ function Header(props) {
         </button>
       </section>
 
+      {/* <h1>{user ? user.name : ''}</h1> */}
       <section className="header__option">
         <button>Kênh người bán</button>
         <span>|</span>
@@ -73,47 +74,76 @@ function Header(props) {
         <CgShoppingCart onClick={handleCart} />
       </section>
 
-      <h1>{user ? user.name : ""}</h1>
+      {/* <h1>{user ? user.name : ""}</h1> */}
 
       <section className="header__user">
-        {token === null ? (
-          <div>
-            <button
-              onClick={() => {
-                navigate("/register");
-              }}
-            >
-              Đăng ký
-            </button>
-            <span>|</span>
-            <button
-              onClick={() => {
-                navigate("/login");
-              }}
-            >
-              Đăng nhập
-            </button>
-          </div>
-        ) : (
-          <div>
-            <button
-              onClick={() => {
-                navigate("/profile");
-              }}
-            >
-              Tài khoản của bạn
-            </button>
-            <span>|</span>
-            <button
-              onClick={() => {
-                localStorage.removeItem("token");
-                navigate("/");
-              }}
-            >
-              Đăng xuất
-            </button>
-          </div>
-        )}
+        {
+          token === null ? (
+            <div>
+              <button
+                onClick={() => {
+                  navigate("/register");
+                }}
+              >
+                Đăng ký
+              </button>
+              <span>|</span>
+              <button
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                Đăng nhập
+              </button>
+            </div>
+          ) : (
+            <div className="header__user-name">{user ? user.name : ""}</div>
+          )
+          // dùng tippy .
+
+          // (
+          //   <div>
+          //     <button
+          //       onClick={() => {
+          //         navigate("/profile");
+          //       }}
+          //     >
+          //       Tài khoản của bạn
+          //     </button>
+          //     <span style={{ color: "#fff" }}>|</span>
+          //     <button
+          //       onClick={() => {
+          //         localStorage.removeItem("token");
+          //         navigate("/");
+          //       }}
+          //     >
+          //       Đăng xuất
+          //     </button>
+          //   </div>
+          // )
+        }
+        
+        {/* ) : (
+        <div>
+          <button
+            onClick={() => {
+              navigate("/profile");
+            }}
+          >
+            Tài khoản của bạn
+          </button>
+          <span>|</span>
+          <button
+            onClick={() => {
+              localStorage.removeItem("token");
+              navigate("/");
+            }}
+          >
+            Đăng xuất
+          </button>
+        </div>
+        ) */}
+
       </section>
     </div>
   );

@@ -3,17 +3,18 @@ import { Link } from "react-router-dom";
 
 function Product({ product }) {
   return (
-    <div className="product">
-      <div className="product__image">
+    <div className="col-2-5">
+      <div className="product">
         <Link to={"/product/" + product._id}>
-          <img src={product.image} alt="" />
+          <div className="product__image">
+            <img src={product.image} alt="" />
+          </div>
+          <div className="product__name">{product.name}</div>
+          <div className="product__price">{product.price.toLocaleString()}đ</div>
+          <div>còn hàng</div>
         </Link>
       </div>
-      <div className="product__name">
-        <Link to={"/product/" + product._id}>{product.name}</Link>
-      </div>
-      <div className="product__price">{product.price.toLocaleString()}₫</div>
-    </div>
+     </div>
   );
 }
 

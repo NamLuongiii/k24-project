@@ -4,14 +4,17 @@ import { useEffect, useState } from "react";
 import { BiError } from "react-icons/bi";
 import { FaEye, FaEyeSlash, FaApple, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import logo2 from "../assets/images/logo-2.png";
 import logo1 from "../assets/images/logoSP.png";
 import Loading from "../components/Loading";
 import "../styles/Login.scss";
 import { loginSchema } from "../validations/UserValidation";
+import {setUser} from '../redux/_user';
 
 export default function Login() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -47,7 +50,9 @@ export default function Login() {
 
         if (token !== null) {
           setIsLogin(true);
+          await getUser(res.data.token)
           navigate("/");
+
         }
       } catch (error) {
         console.log(error);
@@ -57,6 +62,23 @@ export default function Login() {
       }
     },
   });
+
+  const getUser = async (token) => {
+    try {
+      const endpoint = "https://k24-server-1.herokuapp.com/user";
+
+      const res = await axios({
+        url: endpoint,
+        method: "get",
+        headers: { token },
+      });
+
+      const action = setUser(res.data);
+      dispatch(action);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -144,9 +166,9 @@ export default function Login() {
           </div>
 
           <div className="or">
-            <div class="line"></div>
+            <div className="line"></div>
             <span>Hoặc</span>
-            <div class="line"></div>
+            <div className="line"></div>
           </div>
 
           <div className="or_container">
