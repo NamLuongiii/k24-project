@@ -8,8 +8,10 @@ import "../styles/Detail.scss"
 function Detail(props) {
   const [product, setProduct] = useState({});
   const [cartItems, setCartItems] = useState([]);
-  const token = localStorage.getItem("token");
   const [loading, setLoading] = useState(false);
+  
+  const token = localStorage.getItem("token");
+  
   let { id } = useParams();
   let navigate = useNavigate();
 
