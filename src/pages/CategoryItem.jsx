@@ -57,6 +57,7 @@ function CategoryItem(props) {
           ) : (
             <div className="container">
               <div className="row">
+                
                 <div className="category-item__list">
                   {categoryItem.items.map((value, index) => (
                       <Product key={index} product={value} />
