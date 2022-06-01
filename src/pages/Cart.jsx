@@ -1,8 +1,8 @@
 import {
-    UilEditAlt,
-    UilMinus,
-    UilPlus,
-    UilTrashAlt
+  UilEditAlt,
+  UilMinus,
+  UilPlus,
+  UilTrashAlt,
 } from "@iconscout/react-unicons";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
