@@ -43,7 +43,6 @@ export default function Home() {
   return (
     <div
       style={{
-        height: "1500px",
         backgroundColor: "#F5F5F5",
         display: "flex",
         flexDirection: "column",
@@ -53,7 +52,7 @@ export default function Home() {
       <div className="container">
        <div className="row">
          <div className="col-12">
-            <div className="home-banner" style={{ marginTop: '100px', paddingTop: '20px'}}>
+            <div className="home-banner" style={{ paddingTop: '20px'}}>
               <img style={{ width: '100%'}} src="https://cf.shopee.com.my/file/5e7d031649e162ee1b4fa73bc686bb43" alt="home-banner" />
             </div>
          </div>
