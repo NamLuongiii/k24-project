@@ -102,7 +102,7 @@ function Detail(props) {
           <div className="container">
             <div
               className="product-detail-container"
-              style={{ marginTop: "150px" }}
+              style={{ marginTop: "80px" }}
             >
               <div className="box-image">
                 <div className="gallery-item item-main">

@@ -1,13 +1,18 @@
 import React, { useState } from "react";
+import { Tooltip  } from 'antd';
+
 import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
 import { CgShoppingCart } from "react-icons/cg";
 import { GoSearch } from "react-icons/go";
+
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import logoWhite from "../assets/images/logoWhite.png";
 import "../styles/Header.scss";
 
 function Header(props) {
+ 
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.userReducer);
@@ -97,7 +102,13 @@ function Header(props) {
               </button>
             </div>
           ) : (
-            <div className="header__user-name">{user ? user.name : ""}</div>
+                // <Tooltip
+                //   placement="bottom"
+                //   title={<div style={{ color: 'blue' }}>prompt text</div>}  
+                // >
+                <div className="header__user-name">{user ? user.name : ""}</div>
+              // </Tooltip>
+              
           )
           // dùng tippy .
 
@@ -122,27 +133,7 @@ function Header(props) {
           //   </div>
           // )
         }
-        
-        {/* ) : (
-        <div>
-          <button
-            onClick={() => {
-              navigate("/profile");
-            }}
-          >
-            Tài khoản của bạn
-          </button>
-          <span>|</span>
-          <button
-            onClick={() => {
-              localStorage.removeItem("token");
-              navigate("/");
-            }}
-          >
-            Đăng xuất
-          </button>
-        </div>
-        ) */}
+
 
       </section>
     </div>
