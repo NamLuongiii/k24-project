@@ -93,7 +93,7 @@ export default function Profile() {
                 <div className="group">
                   <label>SĐT:</label>
                   <input
-                    readOnly
+                    // readOnly
                     type="text"
                     defaultValue={data && data.phone}
                   />

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Loading from '../components/Loading.jsx'
 import "../styles/Detail.scss"
 
@@ -95,53 +96,61 @@ function Detail(props) {
 
   return (
     <div>
+      <Header />
+
       {
         loading ? <>
           <Loading />
         </> : <>
-          <div className="container">
-            <div
-              className="product-detail-container"
-              style={{ marginTop: "80px" }}
-            >
-              <div className="box-image">
-                <div className="gallery-item item-main">
-                  <img src={product.image} />
-                </div>
-              </div>
-
-              <div className="box-info">
-                <h2 className="name">{product.name}</h2>
-
-                <div className="price-stock clearfix">
-                  <div className="info-price">{product.price}</div>
-                  <div className="stock">In stock</div>
-                </div>
-
-                <div className="description">
-                  Form áo: OVERSIZE form rộng chuẩn TAY LỠ UNISEX cực đẹp. Ngày nay áo phông nam tay lỡ được coi là món đồ " Must have " trong tủ đồ của các tín đồ về thời trang...
-                </div>
-
-                <div className="add-to-cart">
-                  {token ? (
-                    <button id="addtocart" className="addtocart" onClick={handleAddCart}>
-                      {loadingText}
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        navigate("/login");
-                      }}
-                    >
-                      Login
-                    </button>
-                  )}
+          <div className="main-detail">
+            <div className="container">
+              <div>
+                <div
+                  className="product-detail-container"
+                  style={{ marginTop: "40px" }}
+                >
+                  <div className="box-image">
+                    <div className="gallery-item item-main">
+                      <img src={product.image} />
+                    </div>
+                  </div>
+    
+                  <div className="box-info">
+                    <h2 className="name">{product.name}</h2>
+    
+                    <div className="price-stock clearfix">
+                      <div className="info-price">{product.price}</div>
+                      <div className="stock">In stock</div>
+                    </div>
+    
+                    <div className="description">
+                      Form áo: OVERSIZE form rộng chuẩn TAY LỠ UNISEX cực đẹp. Ngày nay áo phông nam tay lỡ được coi là món đồ " Must have " trong tủ đồ của các tín đồ về thời trang...
+                    </div>
+    
+                    <div className="add-to-cart">
+                      {token ? (
+                        <button id="addtocart" className="addtocart" onClick={handleAddCart}>
+                          {loadingText}
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            navigate("/login");
+                          }}
+                        >
+                          Login
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </>
       }
+
+      <Footer />
 
     </div>
   );

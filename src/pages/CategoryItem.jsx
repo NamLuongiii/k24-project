@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Loading from "../components/Loading";
 import Product from "../components/Product";
 import "../styles/CategoryItem.scss";
@@ -45,7 +46,8 @@ function CategoryItem(props) {
 
   return (
     <div >
-      
+      <Header />
+
       <div className="category-item__main">
         <div className="container">
           {/* <h4>{"Category: " + id}</h4> */}
@@ -66,6 +68,8 @@ function CategoryItem(props) {
           )}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

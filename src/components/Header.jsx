@@ -6,12 +6,15 @@ import { CgShoppingCart } from "react-icons/cg";
 import { GoSearch } from "react-icons/go";
 
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import logoWhite from "../assets/images/logoWhite.png";
 import "../styles/Header.scss";
 
 function Header(props) {
+
+  let [searchParams, setSearchParams] = useSearchParams();
+  const keyword = searchParams.get("keyword");
  
   const navigate = useNavigate();
 
@@ -45,6 +48,7 @@ function Header(props) {
           src={logoWhite}
           alt=""
           onClick={() => {
+            // setSearch("")
             navigate("/");
           }}
         />
@@ -101,37 +105,38 @@ function Header(props) {
                 Đăng nhập
               </button>
             </div>
-          ) : (
-                // <Tooltip
-                //   placement="bottom"
-                //   title={<div style={{ color: 'blue' }}>prompt text</div>}  
-                // >
-                <div className="header__user-name">{user ? user.name : ""}</div>
-              // </Tooltip>
+          ) :
+          //   (
+          //       // <Tooltip
+          //       //   placement="bottom"
+          //       //   title={<div style={{ color: 'blue' }}>prompt text</div>}  
+          //       // >
+          //       <div className="header__user-name">{user ? user.name : ""}</div>
+          //     // </Tooltip>
               
-          )
+          // )
           // dùng tippy .
 
-          // (
-          //   <div>
-          //     <button
-          //       onClick={() => {
-          //         navigate("/profile");
-          //       }}
-          //     >
-          //       Tài khoản của bạn
-          //     </button>
-          //     <span style={{ color: "#fff" }}>|</span>
-          //     <button
-          //       onClick={() => {
-          //         localStorage.removeItem("token");
-          //         navigate("/");
-          //       }}
-          //     >
-          //       Đăng xuất
-          //     </button>
-          //   </div>
-          // )
+          (
+            <div>
+              <button
+                onClick={() => {
+                  navigate("/profile");
+                }}
+              >
+                Tài khoản của bạn
+              </button>
+              <span style={{ color: "#fff" }}>|</span>
+              <button
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  navigate("/");
+                }}
+              >
+                Đăng xuất
+              </button>
+            </div>
+          )
         }
 
 

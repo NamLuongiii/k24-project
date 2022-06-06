@@ -1,9 +1,8 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
 import PrivateRouter from "./components/PrivateRouter";
 import { removeUser, setUser } from "./redux/_user";
 import routers from "./routers/router";
@@ -20,7 +19,8 @@ function App() {
 
   const getUser = async () => {
     try {
-      const endpoint = "https://k24-server-1.herokuapp.com/user";
+      // const endpoint = "https://k24-server-1.herokuapp.com/user";
+      const endpoint = process.env.REACT_APP_BACKEND_HOST + "/user";
 
       const res = await axios({
         url: endpoint,
@@ -38,8 +38,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
-
         <Routes>
           {routers.map((route, index) => (
             <Route
@@ -55,7 +53,6 @@ function App() {
             />
           ))}
         </Routes>
-        
       </BrowserRouter>
     </div>
   );

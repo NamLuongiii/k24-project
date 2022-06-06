@@ -41,6 +41,8 @@ function Search(props) {
       });
 
       setData(data);
+
+      // localStorage.setItem("data", JSON.stringify(data));
     } catch (error) {
       console.log(error);
     }
@@ -71,6 +73,7 @@ function Search(props) {
         marginBottom: "100px",
       }}
     >
+      <Header />
 
       {
         // loading ? (
@@ -87,7 +90,7 @@ function Search(props) {
 
       {Pagination}
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
