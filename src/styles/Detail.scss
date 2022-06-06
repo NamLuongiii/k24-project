@@ -23,7 +23,9 @@
   }
   
   .product-detail-container .box-image img {
-    width: 100%;
+    width: 400px;
+    height: 500px;
+    object-fit: contain;
   }
   
   .product-detail-container .box-info {

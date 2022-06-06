@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Tooltip  } from 'antd';
 
 import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
 import { CgShoppingCart } from "react-icons/cg";
 import { GoSearch } from "react-icons/go";
+
+import Tippy from "@tippyjs/react/headless";
+import "tippy.js/dist/tippy.css";
 
 import { useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -12,10 +14,9 @@ import logoWhite from "../assets/images/logoWhite.png";
 import "../styles/Header.scss";
 
 function Header(props) {
-
   let [searchParams, setSearchParams] = useSearchParams();
   const keyword = searchParams.get("keyword");
- 
+
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.userReducer);
@@ -83,63 +84,54 @@ function Header(props) {
         <CgShoppingCart onClick={handleCart} />
       </section>
 
-      {/* <h1>{user ? user.name : ""}</h1> */}
-
       <section className="header__user">
-        {
-          token === null ? (
-            <div>
-              <button
-                onClick={() => {
-                  navigate("/register");
-                }}
-              >
-                Đăng ký
-              </button>
-              <span>|</span>
-              <button
-                onClick={() => {
-                  navigate("/login");
-                }}
-              >
-                Đăng nhập
-              </button>
-            </div>
-          ) :
-          //   (
-          //       // <Tooltip
-          //       //   placement="bottom"
-          //       //   title={<div style={{ color: 'blue' }}>prompt text</div>}  
-          //       // >
-          //       <div className="header__user-name">{user ? user.name : ""}</div>
-          //     // </Tooltip>
-              
-          // )
-          // dùng tippy .
-
-          (
-            <div>
-              <button
-                onClick={() => {
-                  navigate("/profile");
-                }}
-              >
-                Tài khoản của bạn
-              </button>
-              <span style={{ color: "#fff" }}>|</span>
-              <button
-                onClick={() => {
-                  localStorage.removeItem("token");
-                  navigate("/");
-                }}
-              >
-                Đăng xuất
-              </button>
-            </div>
-          )
-        }
-
-
+        {token === null ? (
+          <div>
+            <button
+              onClick={() => {
+                navigate("/register");
+              }}
+            >
+              Đăng ký
+            </button>
+            <span>|</span>
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Đăng nhập
+            </button>
+          </div>
+        ) : 
+        (
+          <Tippy
+            render={(attrs) => (
+              <div style={{ background: "black" }}>
+                <button
+                  onClick={() => {
+                    navigate("/profile");
+                  }}
+                >
+                  Tài khoản của bạn
+                </button>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    navigate("/");
+                  }}
+                >
+                  Đăng xuất
+                </button>
+              </div>
+            )}
+            arrow={false}
+            interactive
+            placement="bottom"
+          >
+            <div className="header__user-name">{user ? user.name : ""}</div>
+          </Tippy>
+        )}
       </section>
     </div>
   );

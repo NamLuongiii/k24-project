@@ -27,7 +27,7 @@ export default function Profile() {
           token: token,
         },
       });
-
+    
       setData(res.data);
     } catch (error) {
       console.log(error.message);
@@ -115,7 +115,6 @@ export default function Profile() {
                     value={data && data.address}
                     onChange={(e) => {
                       setData({ ...data, address: e.target.value });
-                      console.log(e.target.value);
                     }}
                   />
                 </div>
