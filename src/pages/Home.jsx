@@ -23,7 +23,7 @@ export default function Home() {
   const loadProductList = async () => {
     setLoading(true);
     try {
-      const endpoint = "https://k24-server-1.herokuapp.com/" + "product" + "";
+      const endpoint = "https://k24-server-1.herokuapp.com/" + "product?limit=20" ;
 
       const { data } = await axios({
         url: endpoint,
@@ -80,13 +80,13 @@ export default function Home() {
             </div>
           </div>
 
-          {/* <div className="product-home__list"> */}
           <div className="row">
             {productList.items.map((productItem, index) => (
-              <Product key={index} product={productItem} />
+              <div key={index} className="col-2-5">
+                <Product  product={productItem} />
+              </div>
             ))}
           </div>
-          {/* </div> */}
         </div>
       )}
 

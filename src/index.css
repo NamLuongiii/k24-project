@@ -37,3 +37,7 @@ a[href] {
 }
 
 
+.col-2-5 {
+  flex: 0 0 auto;
+  width: 20%;
+}

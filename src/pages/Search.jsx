@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Pagination } from "antd";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -48,31 +49,8 @@ function Search(props) {
     }
   };
 
-  const totalPage = Math.ceil(data.total_item / data.limit);
-
-  const Pagination = [];
-  for (let index = 0; index < totalPage; index++) {
-    Pagination.push(
-      <button
-        onClick={() => {
-          // /search?keyword=product&page=index
-          const host = `${window.location.pathname}?keyword=${searchParams.get(
-            "keyword"
-          )}&page=${index}`;
-          navigate(host);
-        }}
-      >
-        {index + 1}
-      </button>
-    );
-  }
-
   return (
-    <div
-      style={{
-        marginBottom: "100px",
-      }}
-    >
+    <div>
       <Header />
 
       {
@@ -80,15 +58,28 @@ function Search(props) {
         // <Loading />
         // ) :
         <div className="products container">
-          <div className="row" style={{width: '100%'}}>
+          <div className="row" style={{ width: "100%" }}>
             {data.items.map((product) => {
-              return <Product key={product._id} product={product} />;
+              return (
+                <div className="col-2-5" key={product._id}>
+                  <Product product={product} />
+                </div>
+              );
             })}
           </div>
         </div>
       }
 
-      {Pagination}
+      <Pagination
+        total={data.total_item}
+        onChange={(page, pageSize) => {
+          const host = `${window.location.pathname}?keyword=${searchParams.get(
+            "keyword"
+          )}&page=${page - 1}`;
+
+          navigate(host);
+        }}
+      />
 
       <Footer />
     </div>

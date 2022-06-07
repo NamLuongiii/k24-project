@@ -1,18 +1,15 @@
 $color--red: #ee4d2d;
 $color--white: #ffffff;
 
-// *{
-//     box-sizing: border-box;
-// }
 .cart-main {
     margin-top: -100px;
 }
 
 .header-cart {
-    // border-bottom: 1px solid #d3d3d3;
-    max-width: 1200px;
+    border-bottom: 1px solid #d3d3d3;
+    // max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 0 0;
+    // padding: 20px 0 0;
     & h2 {
         color: $color--red;
         font-weight: 500;
@@ -64,7 +61,7 @@ $color--white: #ffffff;
     .content-product__main {
         margin: 0 auto;
         padding: 20px 0;
-        width: 1200px;
+        // width: 1200px;
         ._2eZQze {
             box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
             display: flex;

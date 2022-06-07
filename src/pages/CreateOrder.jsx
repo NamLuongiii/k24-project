@@ -124,8 +124,8 @@ export default function CreateOrder() {
                     value={item.product.price}
                     displayType={"text"}
                     thousandSeparator={true}
-                    prefix={""}
                   />
+                  <sup>đ</sup>
                 </span>
                 <span className="flex-1">{item.quantity}</span>
                 <span className="flex-2">
@@ -133,8 +133,8 @@ export default function CreateOrder() {
                     value={item.product.price * item.quantity}
                     displayType={"text"}
                     thousandSeparator={true}
-                    prefix={""}
                   />
+                  <sup>đ</sup>
                 </span>
               </div>
             ))}
@@ -142,14 +142,14 @@ export default function CreateOrder() {
 
           <div className="cart_pay">
             <div className="cart_pay_lbl">
-              <span>Tổng số tiền </span>
+              <span>Tổng số tiền: </span>
 
               <span>
                 <NumberFormat
                   value={isSum}
                   displayType={"text"}
                   thousandSeparator={true}
-                  prefix={"vnđ "}
+                  suffix={" VNĐ "}
                 />
               </span>
             </div>

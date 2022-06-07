@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Loading from '../components/Loading.jsx'
-import "../styles/Detail.scss"
+import Loading from "../components/Loading.jsx";
+import "../styles/Detail.scss";
+import NumberFormat from "react-number-format";
 
 function Detail(props) {
   const [product, setProduct] = useState({});
@@ -13,7 +14,7 @@ function Detail(props) {
   const [loadingText, setLoadingText] = useState("Add to Cart");
 
   const token = localStorage.getItem("token");
-  
+
   let { id } = useParams();
   let navigate = useNavigate();
 
@@ -88,8 +89,8 @@ function Detail(props) {
     } finally {
       setLoadingText("Complete...");
 
-      setTimeout(function(){
-          navigate("/cart")
+      setTimeout(function () {
+        navigate("/cart");
       }, 1000);
     }
   };
@@ -98,10 +99,12 @@ function Detail(props) {
     <div>
       <Header />
 
-      {
-        loading ? <>
+      {loading ? (
+        <>
           <Loading />
-        </> : <>
+        </>
+      ) : (
+        <>
           <div className="main-detail">
             <div className="container">
               <div>
@@ -114,22 +117,36 @@ function Detail(props) {
                       <img src={product.image} />
                     </div>
                   </div>
-    
+
                   <div className="box-info">
                     <h2 className="name">{product.name}</h2>
-    
+
                     <div className="price-stock clearfix">
-                      <div className="info-price">{product.price}</div>
+                      <div className="info-price">
+                        <NumberFormat
+                          value={product.price}
+                          displayType={"text"}
+                          thousandSeparator={true}
+                          // suffix={" đ"}
+                          />
+                          <sup>đ</sup>
+                      </div>
                       <div className="stock">In stock</div>
                     </div>
-    
+
                     <div className="description">
-                      Form áo: OVERSIZE form rộng chuẩn TAY LỠ UNISEX cực đẹp. Ngày nay áo phông nam tay lỡ được coi là món đồ " Must have " trong tủ đồ của các tín đồ về thời trang...
+                      Form áo: OVERSIZE form rộng chuẩn TAY LỠ UNISEX cực đẹp.
+                      Ngày nay áo phông nam tay lỡ được coi là món đồ " Must
+                      have " trong tủ đồ của các tín đồ về thời trang...
                     </div>
-    
+
                     <div className="add-to-cart">
                       {token ? (
-                        <button id="addtocart" className="addtocart" onClick={handleAddCart}>
+                        <button
+                          id="addtocart"
+                          className="addtocart"
+                          onClick={handleAddCart}
+                        >
                           {loadingText}
                         </button>
                       ) : (
@@ -148,10 +165,9 @@ function Detail(props) {
             </div>
           </div>
         </>
-      }
+      )}
 
       <Footer />
-
     </div>
   );
 }

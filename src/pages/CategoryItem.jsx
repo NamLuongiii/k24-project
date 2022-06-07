@@ -50,7 +50,6 @@ function CategoryItem(props) {
 
       <div className="category-item__main">
         <div className="container">
-          {/* <h4>{"Category: " + id}</h4> */}
           <div className="category-item__title">Danh mục sản phẩm:</div>
     
           {loading ? (
@@ -58,11 +57,11 @@ function CategoryItem(props) {
           ) : (
             <div className="container">
               <div className="row">
-                {/* <div className="category-item__list"> */}
                   {categoryItem.items.map((value, index) => (
-                      <Product key={index} product={value} />
+                    <div  key={index} className="col-2-5">
+                      <Product product={value} />
+                    </div>
                   ))}
-                {/* </div> */}
               </div>
               </div>
           )}

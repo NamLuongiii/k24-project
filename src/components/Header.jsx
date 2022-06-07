@@ -4,7 +4,7 @@ import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
 import { CgShoppingCart } from "react-icons/cg";
 import { GoSearch } from "react-icons/go";
 
-import Tippy from "@tippyjs/react/headless";
+import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
 import { useSelector } from "react-redux";
@@ -14,8 +14,8 @@ import logoWhite from "../assets/images/logoWhite.png";
 import "../styles/Header.scss";
 
 function Header(props) {
-  let [searchParams, setSearchParams] = useSearchParams();
-  const keyword = searchParams.get("keyword");
+  // let [searchParams, setSearchParams] = useSearchParams();
+  // const keyword = searchParams.get("keyword");
 
   const navigate = useNavigate();
 
@@ -69,7 +69,6 @@ function Header(props) {
         </button>
       </section>
 
-      {/* <h1>{user ? user.name : ''}</h1> */}
       <section className="header__option">
         <button>Kênh người bán</button>
         <span>|</span>
@@ -103,11 +102,10 @@ function Header(props) {
               Đăng nhập
             </button>
           </div>
-        ) : 
-        (
+        ) : (
           <Tippy
-            render={(attrs) => (
-              <div style={{ background: "black" }}>
+            content={
+              <div style={{ width: "110px" }}>
                 <button
                   onClick={() => {
                     navigate("/profile");
@@ -124,10 +122,8 @@ function Header(props) {
                   Đăng xuất
                 </button>
               </div>
-            )}
-            arrow={false}
+            }
             interactive
-            placement="bottom"
           >
             <div className="header__user-name">{user ? user.name : ""}</div>
           </Tippy>
