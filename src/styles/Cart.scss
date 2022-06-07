@@ -59,8 +59,8 @@ $color--white: #ffffff;
 .content-product {
     background-color: #f5f5f5;
     .content-product__main {
-        margin: 0 auto;
-        padding: 20px 0;
+        margin: 50px auto;
+        padding: 50px 0;
         // width: 1200px;
         ._2eZQze {
             box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
@@ -70,14 +70,16 @@ $color--white: #ffffff;
             overflow: hidden;
             border-radius: 3px;
             height: 55px;
-            font-size: 14px;
+            font-size: 18px;
             background: #fff;
             text-transform: capitalize;
             margin-bottom: 12px;
-            color: #888;
+            color: black;
+            font-weight: bold;
             padding: 0 20px;
             ._2cHnzN {
                 color: rgba(0,0,0,.8);
+                
                 width: 46.27949%;
                 text-align: left;
             }

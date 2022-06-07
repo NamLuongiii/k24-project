@@ -21,7 +21,7 @@ function Detail(props) {
   const productInfo = async () => {
     setLoading(true);
     try {
-      const url = "https://k24-server-1.herokuapp.com/product/" + id;
+      const url = process.env.REACT_APP_BACKEND_HOST + "/product/" + id;
 
       const { data } = await axios({
         url: url,
@@ -43,7 +43,7 @@ function Detail(props) {
 
   const getCart = async () => {
     try {
-      const url = "https://k24-server-1.herokuapp.com/cart";
+      const url = process.env.REACT_APP_BACKEND_HOST + "/cart";
 
       const { data } = await axios({
         url: url,
@@ -65,8 +65,7 @@ function Detail(props) {
     setLoadingText("Adding...");
 
     try {
-      const url = "https://k24-server-1.herokuapp.com/cart";
-
+      const url = process.env.REACT_APP_BACKEND_HOST + "/cart";
       await axios({
         url: url,
         method: "put",

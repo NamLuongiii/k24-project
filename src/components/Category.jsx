@@ -12,7 +12,7 @@ function Category(props) {
 
   const loadCategories = async () => {
     try {
-      const endpoint = "https://k24-server-1.herokuapp.com/category";
+      const endpoint = process.env.REACT_APP_BACKEND_HOST + "/category";
 
       const { data } = await axios({
         url: endpoint,

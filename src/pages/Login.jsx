@@ -38,7 +38,7 @@ export default function Login() {
         setLoading(true);
         const res = await axios({
           method: "post",
-          url: "https://k24-server-1.herokuapp.com/user/login",
+          url: process.env.REACT_APP_BACKEND_HOST + "/user/login",
           data: {
             phone: data.phone,
             password: data.password,
@@ -65,7 +65,7 @@ export default function Login() {
 
   const getUser = async (token) => {
     try {
-      const endpoint = "https://k24-server-1.herokuapp.com/user";
+      const endpoint = process.env.REACT_APP_BACKEND_HOST + "/user";
 
       const res = await axios({
         url: endpoint,

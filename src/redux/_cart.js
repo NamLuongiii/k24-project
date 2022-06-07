@@ -6,6 +6,7 @@ export const cartSlice = createSlice({ //config
     cart: null, // Gia tri mac dinh ban dau cua cart
     //Muốn thêm trường j để lưu vào redux thì khai báo ở đây ví dụ
     // token:"",
+    totalQuantity: 0,
   },
   reducers: {
     setCart: (state, action) => { //state cũ, action chứa các giá trị mà người ta truyền vào

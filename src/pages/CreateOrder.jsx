@@ -15,6 +15,7 @@ export default function CreateOrder() {
 
   const { user } = useSelector((state) => state.userReducer); // dùng để lấy dữ liệu từ slice
   const { cart } = useSelector((state) => state.cartReducer); // dùng để lấy dữ liệu từ slice
+  
   const [isSum] = useState(() => {
     let t = 0;
     cart.products.map((item) => (t += item.product.price));
@@ -27,7 +28,7 @@ export default function CreateOrder() {
       //Create order
       await axios({
         method: "POST",
-        url: "https://k24-server-1.herokuapp.com/order",
+        url: process.env.REACT_APP_BACKEND_HOST + "/order",
         headers: {
           "Content-Type": "application/json",
           token: token,
@@ -43,7 +44,7 @@ export default function CreateOrder() {
       //Remove product in cart
       await axios({
         method: "PUT",
-        url: "https://k24-server-1.herokuapp.com/cart",
+        url: process.env.REACT_APP_BACKEND_HOST + "/cart",
         headers: {
           "Content-Type": "application/json",
           token: token,
@@ -68,7 +69,7 @@ export default function CreateOrder() {
   return (
     <div className="main-create-order">
       <header>
-        <div style={{ display: "flex", alignItems: "center", width: 300 }}>
+        <div style={{ display: "flex", alignItems: "center", width: "300px" }}>
           <img
             src={logo2}
             alt="logo"

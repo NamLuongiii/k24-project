@@ -23,7 +23,7 @@ export default function Home() {
   const loadProductList = async () => {
     setLoading(true);
     try {
-      const endpoint = "https://k24-server-1.herokuapp.com/" + "product?limit=20" ;
+      const endpoint = process.env.REACT_APP_BACKEND_HOST + "/product?limit=20" ;
 
       const { data } = await axios({
         url: endpoint,

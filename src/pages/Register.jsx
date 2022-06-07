@@ -39,7 +39,7 @@ export default function Register() {
         setLoading(true);
         await axios({
           method: "post",
-          url: "https://k24-server-1.herokuapp.com/user",
+          url: process.env.REACT_APP_BACKEND_HOST + "/user",
           data: {
             phone: data.phone,
             name: data.name,

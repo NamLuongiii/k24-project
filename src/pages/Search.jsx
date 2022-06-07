@@ -30,11 +30,7 @@ function Search(props) {
     setLoading(true);
     try {
       const endpoint =
-        "https://k24-server-1.herokuapp.com/product?search=" +
-        keyword +
-        "&page=" +
-        page;
-
+        process.env.REACT_APP_BACKEND_HOST + "/product?search=" + keyword + "&page=" + page;
       const { data } = await axios({
         url: endpoint,
         headers: {},

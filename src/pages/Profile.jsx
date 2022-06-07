@@ -21,7 +21,7 @@ export default function Profile() {
       const token = localStorage.getItem("token");
       const res = await axios({
         method: "get",
-        url: "https://k24-server-1.herokuapp.com/user",
+        url: process.env.REACT_APP_BACKEND_HOST + "/user",
         headers: {
           "Content-Type": "application/json",
           token: token,
@@ -52,7 +52,7 @@ export default function Profile() {
       const token = localStorage.getItem("token");
       await axios({
         method: "put",
-        url: "https://k24-server-1.herokuapp.com/user",
+        url: process.env.REACT_APP_BACKEND_HOST + "/user",
         data: {
           name: data.name,
           address: data.address,

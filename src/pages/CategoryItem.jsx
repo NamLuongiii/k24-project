@@ -27,7 +27,7 @@ function CategoryItem(props) {
     setLoading(true);
     try {
       const endpoint =
-        "https://k24-server-1.herokuapp.com/category/" + id + "/product";
+      process.env.REACT_APP_BACKEND_HOST + "/category/" + id + "/product";
 
       const { data } = await axios({
         url: endpoint,
